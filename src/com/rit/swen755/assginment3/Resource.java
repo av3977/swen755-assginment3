@@ -7,12 +7,27 @@ public class Resource {
     LinkedBlockingQueue<Integer> queue = new LinkedBlockingQueue();
     public Boolean continueProducing = Boolean.TRUE;
 
+    public Resource() {
+        // initialize
+        this.queue.add(1);
+    }
+
     public void put(Integer data) throws InterruptedException {
         this.queue.put(data);
     }
+    public void put() throws InterruptedException {
+        this.queue.put(this.queue.peek()+1);
+    }
 
-    public Integer get() throws InterruptedException
-    {
+    public Integer get() throws InterruptedException {
         return this.queue.poll(1, TimeUnit.SECONDS);
+    }
+
+    public Integer peek() throws InterruptedException {
+        return this.queue.peek();
+    }
+
+    public LinkedBlockingQueue<Integer> getQueue() {
+        return queue;
     }
 }

@@ -15,14 +15,15 @@ public class Consumer implements Runnable {
     public void run() {
         try {
             Integer data = resource.get();
-            while (this.requestNumberOfItems != 0) {
+            while (true) {
                 Thread.sleep(1000);
                 if (data!=null) {
                     System.out.println(this.name + " processed data from resource: " + data);
                     this.requestNumberOfItems--;
-                    break;
+                    if (this.requestNumberOfItems == 0)
+                        break;
                 } else {
-                    System.out.println(this.name + " is waiting... ");
+//                    System.out.println(this.name + " is waiting... ");
                 }
                 data = resource.get();
             }
