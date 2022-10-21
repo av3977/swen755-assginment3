@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.*;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -20,7 +19,6 @@ public class ApplicationRunner {
             BlockingQueue jobQueue = new LinkedBlockingQueue<>();
             Consumer[] consumers = new Consumer[30];
             List<Future> producerThreads = new ArrayList<>();
-//            ExecutorService threadPool = Executors.newFixedThreadPool(10);
             ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(10, 15, 60L, SECONDS, jobQueue);
 
             // start 1 producer by default.
@@ -31,10 +29,11 @@ public class ApplicationRunner {
                 int randomNumber = ThreadLocalRandom.current().nextInt(2, 5 + 1);
                 consumers[i] = new Consumer("Consumer-" + String.valueOf(i), resource, randomNumber);
             }
+            int initialConsumerProcess = 7;
 
             System.out.println("--------------------------------------------------------------------------------");
-            System.out.println("--------Executing first 10 consumers--------");
-            for (int i = 0; i<7; i++) {
+            System.out.println("--------Executing first " +initialConsumerProcess+ " consumers--------");
+            for (int i = 0; i<initialConsumerProcess; i++) {
                 poolExecutor.execute(consumers[i]);
             }
 
@@ -61,7 +60,7 @@ public class ApplicationRunner {
             Thread.sleep(20000);
             System.out.println("--------Scheduling next 5 consumers--------");
             for (int i = 0; i<5; i++)
-                poolExecutor.execute(consumers[i+7]);
+                poolExecutor.execute(consumers[i+initialConsumerProcess]);
             poolExecutor.shutdown();
 //            threadPool.shutdown();
         }

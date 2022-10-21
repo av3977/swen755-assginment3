@@ -25,7 +25,7 @@ public class Producer implements Runnable {
         try {
             while (true) {
                 if (this.resource.continueProducing) {
-                    for (Integer i = 1; i <= 5; i++) {
+                    for (Integer i = 1; i <= 3; i++) {
                         System.out.println("Produced Queue: " + resource.getQueue());
 //                        System.out.println(this.name + " produced: " + (resource.peek()+1));
                         Thread.sleep(2000);
