@@ -32,15 +32,16 @@ public class ApplicationRunner {
                 int randomNumber = ThreadLocalRandom.current().nextInt(1, 9 + 1);
                 consumers[i] = new Consumer("Consumer-" + String.valueOf(i), resource, randomNumber, System.currentTimeMillis());
                 consumersThreads[i] = new Thread(consumers[i]);
-                consumersThreads[i].setPriority(randomNumber); // Priority scheduling.
-//                consumersThreads[i].setPriority(10 - randomNumber); --> SJF [Shortest job first]
+//                consumersThreads[i].setPriority(randomNumber); // Priority scheduling.
+                consumersThreads[i].setPriority(10 - randomNumber); // --> SJF [Shortest job first]
             }
-            int initialConsumerProcess = 3;
-
+            int initialConsumerProcess = 7;
+            int secondConsumerBatch = 7;
             System.out.println("--------------------------------------------------------------------------------");
             System.out.println("--------Executing first " +initialConsumerProcess+ " consumers--------");
             for (int i = 0; i<initialConsumerProcess; i++) {
                 poolExecutor.execute(consumersThreads[i]);
+                consumers[i].setScheduled(true);
             }
             // seen 8 threads until here
             Timer timer = new Timer(3000, new ActionListener() {
@@ -65,8 +66,8 @@ public class ApplicationRunner {
             Timer starvationMonitor = new Timer(9000, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                   for (int i = 0;i<jobQueue.size()-1;i++)
-                       if (isStarving(consumers[i]))
+                   for (int i = 0;i<consumers.length;i++)
+                       if (consumers[i].isScheduled() && isStarving(consumers[i]))
                            System.out.println(consumers[i].getName() + " IS STARVING AND REQUESTING FOR " + consumers[i].getRequestNumberOfItems());
                 }
             });
@@ -90,8 +91,11 @@ public class ApplicationRunner {
             // room: 2 + 5 = 7
             // 10 - 7 = -3 (java.util.concurrent.RejectedExecutionException)
 
-            for (int i = 0; i<3; i++)
+            for (int i = 0; i<secondConsumerBatch; i++) {
                 poolExecutor.execute(consumersThreads[i+initialConsumerProcess]);
+                consumers[i+initialConsumerProcess].setScheduled(true);
+            }
+
 
             poolExecutor.shutdown();
         }

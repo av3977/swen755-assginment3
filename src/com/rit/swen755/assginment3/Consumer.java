@@ -6,11 +6,21 @@ public class Consumer implements Runnable {
     private int requestNumberOfItems;
     private long startedTime;
 
+    public void setScheduled(boolean scheduled) {
+        isScheduled = scheduled;
+    }
+
+    public boolean isScheduled() {
+        return isScheduled;
+    }
+
+    private boolean isScheduled = false;
     public Consumer(String name, Resource resource, int requestNumberOfItems, long startedTime) {
         this.name = name;
         this.resource = resource;
         this.requestNumberOfItems = requestNumberOfItems;
         this.startedTime = startedTime;
+        this.isScheduled = false;
         System.out.println(this.name + " entered the store to request " + this.requestNumberOfItems + " items.");
     }
 
@@ -18,6 +28,7 @@ public class Consumer implements Runnable {
         this.name = name;
         this.resource = resource;
         this.requestNumberOfItems = requestNumberOfItems;
+        this.isScheduled = false;
         System.out.println(this.name + " entered the store to request " + this.requestNumberOfItems + " items.");
     }
 
@@ -46,7 +57,7 @@ public class Consumer implements Runnable {
     }
 
     public boolean isStarving() {
-        return System.currentTimeMillis() - this.startedTime > 5000;
+        return (System.currentTimeMillis() - this.startedTime) > 10000;
     }
 
     public String getName() {

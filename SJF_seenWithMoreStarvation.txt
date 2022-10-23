@@ -1,0 +1,117 @@
+/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/bin/java -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=65278:/Applications/IntelliJ IDEA.app/Contents/bin -Dfile.encoding=UTF-8 -classpath /Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/charsets.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/cldrdata.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/dnsns.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/jaccess.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/jfxrt.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/localedata.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/nashorn.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/sunec.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/sunjce_provider.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/sunpkcs11.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/zipfs.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/jce.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/jfr.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/jfxswt.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/jsse.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/management-agent.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/resources.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/rt.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/ant-javafx.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/dt.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/javafx-mx.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/jconsole.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/packager.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/sa-jdi.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/tools.jar:/Users/ashnilvazirani/Desktop/Assignment-3/out/production/Assignment-3 ApplicationRunner
+Produced Queue: [1]
+Consumer-0 entered the store to request 5 items.
+Consumer-1 entered the store to request 6 items.
+Consumer-2 entered the store to request 6 items.
+Consumer-3 entered the store to request 4 items.
+Consumer-4 entered the store to request 1 items.
+Consumer-5 entered the store to request 8 items.
+Consumer-6 entered the store to request 1 items.
+Consumer-7 entered the store to request 1 items.
+Consumer-8 entered the store to request 8 items.
+Consumer-9 entered the store to request 9 items.
+Consumer-10 entered the store to request 8 items.
+Consumer-11 entered the store to request 7 items.
+Consumer-12 entered the store to request 7 items.
+Consumer-13 entered the store to request 5 items.
+Consumer-14 entered the store to request 3 items.
+Consumer-15 entered the store to request 7 items.
+Consumer-16 entered the store to request 7 items.
+Consumer-17 entered the store to request 7 items.
+Consumer-18 entered the store to request 1 items.
+Consumer-19 entered the store to request 3 items.
+Consumer-20 entered the store to request 1 items.
+Consumer-21 entered the store to request 3 items.
+Consumer-22 entered the store to request 9 items.
+Consumer-23 entered the store to request 1 items.
+Consumer-24 entered the store to request 2 items.
+Consumer-25 entered the store to request 5 items.
+Consumer-26 entered the store to request 4 items.
+Consumer-27 entered the store to request 8 items.
+Consumer-28 entered the store to request 7 items.
+Consumer-29 entered the store to request 1 items.
+--------------------------------------------------------------------------------
+--------Executing first 7 consumers--------
+--------Sleeping main thread for 20 seconds--------
+Consumer-0 processed data from resource: 1
+Produced Queue: [0]
+Consumer-0 processed data from resource: 0
+Scale up queue: 0
+Scaling up by: 0
+Produced Queue: [1]
+Consumer-0 processed data from resource: 1
+Scale up queue: 0
+Scaling up by: 0
+Consumer-0 processed data from resource: 2
+Produced Queue: []
+Produced Queue: [3]
+Scale up queue: 0
+Scaling up by: 0
+Consumer-5 processed data from resource: 3
+Produced Queue: [4]
+Consumer-5 processed data from resource: 4
+Scale up queue: 0
+Scaling up by: 0
+Consumer-5 processed data from resource: 5
+Produced Queue: []
+Scale up queue: 0
+Scaling up by: 0
+Produced Queue: [6]
+Consumer-5 processed data from resource: 6
+Produced Queue: [7]
+Consumer-0 IS STARVING AND REQUESTING FOR 1
+Consumer-1 IS STARVING AND REQUESTING FOR 6
+Consumer-2 IS STARVING AND REQUESTING FOR 6
+Consumer-3 IS STARVING AND REQUESTING FOR 4
+Consumer-4 IS STARVING AND REQUESTING FOR 1
+Consumer-5 IS STARVING AND REQUESTING FOR 4
+Consumer-6 IS STARVING AND REQUESTING FOR 1
+Scale up queue: 0
+Scaling up by: 0
+Consumer-5 processed data from resource: 7
+--------Scheduling next 5 consumers--------
+Consumer-5 processed data from resource: 8
+Produced Queue: []
+Scale up queue: 5
+Scaling up by: 0
+Produced Queue: [9]
+Consumer-6 processed data from resource: 9
+Consumer Consumer-6 finished its job; terminating.
+Scale up queue: 4
+Scaling up by: 0
+Produced Queue: [10]
+Consumer-9 processed data from resource: 10
+Consumer-0 IS STARVING AND REQUESTING FOR 1
+Consumer-1 IS STARVING AND REQUESTING FOR 6
+Consumer-2 IS STARVING AND REQUESTING FOR 6
+Consumer-3 IS STARVING AND REQUESTING FOR 4
+Consumer-4 IS STARVING AND REQUESTING FOR 1
+Consumer-5 IS STARVING AND REQUESTING FOR 2
+Consumer-6 IS STARVING AND REQUESTING FOR 0
+Scale up queue: 4
+Scaling up by: 0
+Produced Queue: []
+Consumer-2 processed data from resource: 11
+Produced Queue: [12]
+Scale up queue: 4
+Scaling up by: 0
+Consumer-5 processed data from resource: 12
+Produced Queue: [13]
+Consumer-5 processed data from resource: 13
+Consumer Consumer-5 finished its job; terminating.
+Scale up queue: 3
+Scaling up by: 0
+Produced Queue: []
+Consumer-10 processed data from resource: 14
+Consumer-0 IS STARVING AND REQUESTING FOR 1
+Consumer-1 IS STARVING AND REQUESTING FOR 6
+Consumer-2 IS STARVING AND REQUESTING FOR 5
+Consumer-3 IS STARVING AND REQUESTING FOR 4
+Consumer-4 IS STARVING AND REQUESTING FOR 1
+Consumer-5 IS STARVING AND REQUESTING FOR 0
+Consumer-6 IS STARVING AND REQUESTING FOR 0
+Scale up queue: 3
+Scaling up by: 0
+Produced Queue: [15]
+
+Process finished with exit code 130 (interrupted by signal 2: SIGINT)
