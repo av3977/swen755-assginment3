@@ -1,0 +1,141 @@
+BEST CASE:
+------------------------------------------------------------------------------------------------------------
+
+Produced Queue: [1]
+Consumer-0 entered the store to request 1 items.
+Consumer-1 entered the store to request 6 items.
+Consumer-2 entered the store to request 4 items.
+Consumer-3 entered the store to request 7 items.
+Consumer-4 entered the store to request 1 items.
+Consumer-5 entered the store to request 6 items.
+Consumer-6 entered the store to request 5 items.
+Consumer-7 entered the store to request 9 items.
+Consumer-8 entered the store to request 9 items.
+Consumer-9 entered the store to request 3 items.
+Consumer-10 entered the store to request 8 items.
+Consumer-11 entered the store to request 8 items.
+Consumer-12 entered the store to request 6 items.
+Consumer-13 entered the store to request 1 items.
+Consumer-14 entered the store to request 5 items.
+Consumer-15 entered the store to request 4 items.
+Consumer-16 entered the store to request 7 items.
+Consumer-17 entered the store to request 3 items.
+Consumer-18 entered the store to request 3 items.
+Consumer-19 entered the store to request 3 items.
+Consumer-20 entered the store to request 4 items.
+Consumer-21 entered the store to request 5 items.
+Consumer-22 entered the store to request 5 items.
+Consumer-23 entered the store to request 1 items.
+Consumer-24 entered the store to request 4 items.
+Consumer-25 entered the store to request 5 items.
+Consumer-26 entered the store to request 5 items.
+Consumer-27 entered the store to request 6 items.
+Consumer-28 entered the store to request 4 items.
+Consumer-29 entered the store to request 9 items.
+--------------------------------------------------------------------------------
+--------Executing first 3 consumers--------
+--------Sleeping main thread for 20 seconds--------
+Consumer-0 processed data from resource: 1
+Consumer Consumer-0 finished its job; terminating.
+Produced Queue: [0]
+Consumer-1 processed data from resource: 0
+Scale up queue: 0
+Scaling up by: 0
+Produced Queue: [1]
+Consumer-1 processed data from resource: 1
+Scale up queue: 0
+Scaling up by: 0
+Consumer-1 processed data from resource: 2
+Produced Queue: []
+Produced Queue: [3]
+Scale up queue: 0
+Scaling up by: 0
+Consumer-2 processed data from resource: 3
+Produced Queue: [4]
+Consumer-2 processed data from resource: 4
+Scale up queue: 0
+Scaling up by: 0
+Consumer-2 processed data from resource: 5
+Produced Queue: []
+Scale up queue: 0
+Scaling up by: 0
+Produced Queue: [6]
+Consumer-1 processed data from resource: 6
+Produced Queue: [7]
+Scale up queue: 0
+Scaling up by: 0
+Consumer-1 processed data from resource: 7
+--------Scheduling next 5 consumers--------
+Produced Queue: []
+Consumer-1 processed data from resource: 8
+Consumer Consumer-1 finished its job; terminating.
+Scale up queue: 0
+Scaling up by: 0
+Produced Queue: [9]
+Consumer-2 processed data from resource: 9
+Consumer Consumer-2 finished its job; terminating.
+Scale up queue: 0
+Scaling up by: 0
+Produced Queue: [10]
+Consumer-5 processed data from resource: 10
+Scale up queue: 0
+Scaling up by: 0
+Consumer-5 processed data from resource: 11
+Produced Queue: []
+Produced Queue: [12]
+Scale up queue: 0
+Scaling up by: 0
+Consumer-5 processed data from resource: 12
+Produced Queue: [13]
+Consumer-5 processed data from resource: 13
+Scale up queue: 0
+Scaling up by: 0
+Produced Queue: []
+Consumer-5 processed data from resource: 14
+Scale up queue: 0
+Scaling up by: 0
+Produced Queue: [15]
+Consumer-4 processed data from resource: 15
+Consumer Consumer-4 finished its job; terminating.
+Produced Queue: [16]
+Scale up queue: 0
+Scaling up by: 0
+Consumer-3 processed data from resource: 16
+Produced Queue: []
+Consumer-5 processed data from resource: 17
+Consumer Consumer-5 finished its job; terminating.
+Scale up queue: 0
+Scaling up by: 0
+Produced Queue: [18]
+Consumer-3 processed data from resource: 18
+Scale up queue: 0
+Scaling up by: 0
+Produced Queue: [19]
+Consumer-3 processed data from resource: 19
+Scale up queue: 0
+Scaling up by: 0
+Consumer-3 processed data from resource: 20
+Produced Queue: []
+Produced Queue: [21]
+Scale up queue: 0
+Scaling up by: 0
+Consumer-3 processed data from resource: 21
+Produced Queue: [22]
+Consumer-3 processed data from resource: 22
+Scale up queue: 0
+Scaling up by: 0
+Consumer-3 processed data from resource: 23
+Consumer Consumer-3 finished its job; terminating.
+Produced Queue: []
+Scale up queue: 0
+Scaling up by: 0
+Produced Queue: [24]
+Produced Queue: [24, 25]
+Scale up queue: 0
+Scaling up by: 0
+Scale up queue: 0
+Scaling up by: 0
+Scale up queue: 0
+Scaling up by: 0
+Scale up queue: 0
+Scaling up by: 0
