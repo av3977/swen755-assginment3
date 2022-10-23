@@ -4,6 +4,16 @@ public class Consumer implements Runnable {
     private String name;
     private Resource resource;
     private int requestNumberOfItems;
+    private long startedTime;
+
+    public Consumer(String name, Resource resource, int requestNumberOfItems, long startedTime) {
+        this.name = name;
+        this.resource = resource;
+        this.requestNumberOfItems = requestNumberOfItems;
+        this.startedTime = startedTime;
+        System.out.println(this.name + " entered the store to request " + this.requestNumberOfItems + " items.");
+    }
+
     public Consumer(String name, Resource resource, int requestNumberOfItems) {
         this.name = name;
         this.resource = resource;
@@ -33,5 +43,17 @@ public class Consumer implements Runnable {
         catch (InterruptedException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public boolean isStarving() {
+        return System.currentTimeMillis() - this.startedTime > 5000;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getRequestNumberOfItems() {
+        return requestNumberOfItems;
     }
 }

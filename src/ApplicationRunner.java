@@ -18,23 +18,28 @@ public class ApplicationRunner {
             Resource resource = new Resource();
             BlockingQueue jobQueue = new LinkedBlockingQueue<>();
             Consumer[] consumers = new Consumer[30];
+            Thread[] consumersThreads = new Thread[30];
             List<Future> producerThreads = new ArrayList<>();
             ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(10, 15, 60L, SECONDS, jobQueue);
 
             // start 1 producer by default.
-            producerThreads.add(poolExecutor.submit(new Producer(resource, "Producer-"+ApplicationRunner.numberOfProducers)));
+            Thread producerThread = new Thread(new Producer(resource, "Producer-"+ApplicationRunner.numberOfProducers));
+            producerThread.setPriority(Thread.MAX_PRIORITY);
+            producerThreads.add(poolExecutor.submit(producerThread));
             ApplicationRunner.numberOfProducers++;
 
             for (int i = 0; i<30; i++) {
-                int randomNumber = ThreadLocalRandom.current().nextInt(2, 5 + 1);
-                consumers[i] = new Consumer("Consumer-" + String.valueOf(i), resource, randomNumber);
+                int randomNumber = ThreadLocalRandom.current().nextInt(1, 9 + 1);
+                consumers[i] = new Consumer("Consumer-" + String.valueOf(i), resource, randomNumber, System.currentTimeMillis());
+                consumersThreads[i] = new Thread(consumers[i]);
+                consumersThreads[i].setPriority(randomNumber);
             }
             int initialConsumerProcess = 7;
 
-            System.out.println("--------------------------------------------------------------------------------");
+            System.out.println("------------- -------------------------------------------------------------------");
             System.out.println("--------Executing first " +initialConsumerProcess+ " consumers--------");
             for (int i = 0; i<initialConsumerProcess; i++) {
-                poolExecutor.execute(consumers[i]);
+                poolExecutor.execute(consumersThreads[i]);
             }
 
             Timer timer = new Timer(3000, new ActionListener() {
@@ -43,9 +48,11 @@ public class ApplicationRunner {
                     // FixMe: java.util.concurrent.RejectedExecutionException
                     int scaleUp = scaleUpProducers(jobQueue);
                     System.out.println("Scaling up by: " + scaleUp);
+                    Thread producerThread = new Thread(new Producer(resource, "Producer-"+ApplicationRunner.numberOfProducers));
+                    producerThread.setPriority(Thread.MAX_PRIORITY);
                     // scaling up with multiple producer when consumers are more in demand
                     for (int i = 0; i<scaleUp; i++) {
-                        producerThreads.add(poolExecutor.submit(new Producer(resource, "Producer-"+ApplicationRunner.numberOfProducers)));
+                        producerThreads.add(poolExecutor.submit(producerThread));
                         ApplicationRunner.numberOfProducers++;
                     }
                 }
@@ -53,16 +60,24 @@ public class ApplicationRunner {
             timer.setRepeats(true); // execute multiple times
             timer.start();
 
-            System.out.println("Thread pool: " + poolExecutor);
-            System.out.println("All jobs: " + jobQueue.size());
+
+            Timer starvationMonitor = new Timer(9000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                   for (int i = 0;i<jobQueue.size()-1;i++)
+                       if (isStarving(consumers[i]))
+                           System.out.println(consumers[i].getName() + " IS STARVING AND REQUESTING FOR " + consumers[i].getRequestNumberOfItems());
+                }
+            });
+            starvationMonitor.setRepeats(true); // execute multiple times
+            starvationMonitor.start();
 
             System.out.println("--------Sleeping main thread for 20 seconds--------");
             Thread.sleep(20000);
             System.out.println("--------Scheduling next 5 consumers--------");
             for (int i = 0; i<5; i++)
-                poolExecutor.execute(consumers[i+initialConsumerProcess]);
+                poolExecutor.execute(consumersThreads[i+initialConsumerProcess]);
             poolExecutor.shutdown();
-//            threadPool.shutdown();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -83,5 +98,9 @@ public class ApplicationRunner {
             return 5;
         }
         return 0;
+    }
+
+    private static boolean isStarving(Consumer consumer) {
+        return consumer.isStarving();
     }
 }
