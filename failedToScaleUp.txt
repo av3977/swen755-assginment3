@@ -1,0 +1,227 @@
+WORST CASE:
+------------------------------------------------------------------------------------------------------------
+
+
+/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/bin/java -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=64721:/Applications/IntelliJ IDEA.app/Contents/bin -Dfile.encoding=UTF-8 -classpath /Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/charsets.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/cldrdata.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/dnsns.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/jaccess.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/jfxrt.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/localedata.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/nashorn.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/sunec.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/sunjce_provider.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/sunpkcs11.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/zipfs.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/jce.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/jfr.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/jfxswt.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/jsse.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/management-agent.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/resources.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/rt.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/ant-javafx.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/dt.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/javafx-mx.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/jconsole.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/packager.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/sa-jdi.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/tools.jar:/Users/ashnilvazirani/Desktop/Assignment-3/out/production/Assignment-3 ApplicationRunner
+Consumer-0 entered the store to request 4 items.
+Consumer-1 entered the store to request 1 items.
+Consumer-2 entered the store to request 8 items.
+Consumer-3 entered the store to request 3 items.
+Consumer-4 entered the store to request 5 items.
+Consumer-5 entered the store to request 3 items.
+Consumer-6 entered the store to request 5 items.
+Consumer-7 entered the store to request 8 items.
+Consumer-8 entered the store to request 5 items.
+Consumer-9 entered the store to request 8 items.
+Consumer-10 entered the store to request 9 items.
+Produced Queue: [1]
+Consumer-11 entered the store to request 6 items.
+Consumer-12 entered the store to request 8 items.
+Consumer-13 entered the store to request 3 items.
+Consumer-14 entered the store to request 3 items.
+Consumer-15 entered the store to request 3 items.
+Consumer-16 entered the store to request 9 items.
+Consumer-17 entered the store to request 9 items.
+Consumer-18 entered the store to request 5 items.
+Consumer-19 entered the store to request 3 items.
+Consumer-20 entered the store to request 7 items.
+Consumer-21 entered the store to request 5 items.
+Consumer-22 entered the store to request 8 items.
+Consumer-23 entered the store to request 2 items.
+Consumer-24 entered the store to request 5 items.
+Consumer-25 entered the store to request 5 items.
+Consumer-26 entered the store to request 5 items.
+Consumer-27 entered the store to request 2 items.
+Consumer-28 entered the store to request 2 items.
+Consumer-29 entered the store to request 1 items.
+--------------------------------------------------------------------------------
+--------Executing first 7 consumers--------
+--------Sleeping main thread for 20 seconds--------
+Consumer-0 processed data from resource: 1
+Produced Queue: [0]
+Consumer-0 processed data from resource: 0
+Scale up queue: 0
+Scaling up by: 0
+Produced Queue: [1]
+Consumer-0 processed data from resource: 1
+Scale up queue: 0
+Scaling up by: 0
+Consumer-4 processed data from resource: 2
+Produced Queue: []
+Produced Queue: [3]
+Scale up queue: 0
+Scaling up by: 0
+Consumer-6 processed data from resource: 3
+Produced Queue: [4]
+Consumer-6 processed data from resource: 4
+Scale up queue: 0
+Scaling up by: 0
+Consumer-6 processed data from resource: 5
+Produced Queue: []
+Scale up queue: 0
+Scaling up by: 0
+Produced Queue: [6]
+Consumer-4 processed data from resource: 6
+Produced Queue: [7]
+Scale up queue: 0
+Scaling up by: 0
+Consumer-4 processed data from resource: 7
+--------Scheduling next 5 consumers--------
+Produced Queue: []
+Consumer-4 processed data from resource: 8
+Scale up queue: 10
+Scaling up by: 2
+Exception in thread "AWT-EventQueue-0" java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@dfd9f7 rejected from java.util.concurrent.ThreadPoolExecutor@e18379c[Shutting down, pool size = 10, active threads = 10, queued tasks = 10, completed tasks = 0]
+	at java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2063)
+	at java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:830)
+	at java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1379)
+	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:112)
+	at ApplicationRunner$1.actionPerformed(ApplicationRunner.java:56)
+	at javax.swing.Timer.fireActionPerformed(Timer.java:313)
+	at javax.swing.Timer$DoPostEvent.run(Timer.java:245)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:311)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:205)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+Produced Queue: [9]
+Consumer-6 processed data from resource: 9
+Produced Queue: [10]
+Consumer-6 processed data from resource: 10
+Consumer Consumer-6 finished its job; terminating.
+Consumer-0 IS STARVING AND REQUESTING FOR 1
+Consumer-1 IS STARVING AND REQUESTING FOR 1
+Consumer-2 IS STARVING AND REQUESTING FOR 8
+Consumer-3 IS STARVING AND REQUESTING FOR 3
+Consumer-4 IS STARVING AND REQUESTING FOR 1
+Consumer-5 IS STARVING AND REQUESTING FOR 3
+Consumer-6 IS STARVING AND REQUESTING FOR 0
+Consumer-7 IS STARVING AND REQUESTING FOR 8
+Consumer-9 processed data from resource: 11
+Produced Queue: []
+Produced Queue: []
+Consumer-4 processed data from resource: 12
+Consumer Consumer-4 finished its job; terminating.
+Produced Queue: [13]
+Consumer-10 processed data from resource: 13
+Produced Queue: []
+Consumer-10 processed data from resource: 14
+Consumer-0 IS STARVING AND REQUESTING FOR 1
+Consumer-1 IS STARVING AND REQUESTING FOR 1
+Consumer-2 IS STARVING AND REQUESTING FOR 8
+Consumer-3 IS STARVING AND REQUESTING FOR 3
+Consumer-4 IS STARVING AND REQUESTING FOR 0
+Consumer-5 IS STARVING AND REQUESTING FOR 3
+Consumer-6 IS STARVING AND REQUESTING FOR 0
+Produced Queue: [15]
+Consumer-9 processed data from resource: 15
+Produced Queue: [16]
+Consumer-9 processed data from resource: 16
+Consumer-9 processed data from resource: 17
+Produced Queue: []
+Produced Queue: [18]
+Consumer-10 processed data from resource: 18
+Consumer-0 IS STARVING AND REQUESTING FOR 1
+Consumer-1 IS STARVING AND REQUESTING FOR 1
+Consumer-2 IS STARVING AND REQUESTING FOR 8
+Consumer-3 IS STARVING AND REQUESTING FOR 3
+Consumer-4 IS STARVING AND REQUESTING FOR 0
+Consumer-5 IS STARVING AND REQUESTING FOR 3
+Consumer-6 IS STARVING AND REQUESTING FOR 0
+Produced Queue: [19]
+Consumer-10 processed data from resource: 19
+Consumer-0 processed data from resource: 20
+Consumer Consumer-0 finished its job; terminating.
+Produced Queue: []
+Produced Queue: [21]
+Consumer-9 processed data from resource: 21
+Produced Queue: []
+Consumer-9 processed data from resource: 22
+Consumer-0 IS STARVING AND REQUESTING FOR 0
+Consumer-1 IS STARVING AND REQUESTING FOR 1
+Consumer-2 IS STARVING AND REQUESTING FOR 8
+Consumer-3 IS STARVING AND REQUESTING FOR 3
+Consumer-4 IS STARVING AND REQUESTING FOR 0
+Consumer-5 IS STARVING AND REQUESTING FOR 3
+Consumer-9 processed data from resource: 23
+Produced Queue: []
+Produced Queue: [24]
+Consumer-11 processed data from resource: 24
+Produced Queue: [25]
+Consumer-11 processed data from resource: 25
+Produced Queue: []
+Consumer-11 processed data from resource: 26
+Consumer-0 IS STARVING AND REQUESTING FOR 0
+Consumer-1 IS STARVING AND REQUESTING FOR 1
+Consumer-2 IS STARVING AND REQUESTING FOR 8
+Consumer-3 IS STARVING AND REQUESTING FOR 3
+Consumer-4 IS STARVING AND REQUESTING FOR 0
+Consumer-5 IS STARVING AND REQUESTING FOR 3
+Produced Queue: [27]
+Consumer-9 processed data from resource: 27
+Consumer Consumer-9 finished its job; terminating.
+Produced Queue: [28]
+Consumer-12 processed data from resource: 28
+Consumer-12 processed data from resource: 29
+Produced Queue: []
+Produced Queue: [30]
+Consumer-0 IS STARVING AND REQUESTING FOR 0
+Consumer-1 IS STARVING AND REQUESTING FOR 1
+Consumer-2 IS STARVING AND REQUESTING FOR 8
+Consumer-3 IS STARVING AND REQUESTING FOR 3
+Consumer-4 IS STARVING AND REQUESTING FOR 0
+Consumer-11 processed data from resource: 30
+Produced Queue: [31]
+Consumer-11 processed data from resource: 31
+Produced Queue: []
+Consumer-11 processed data from resource: 32
+Consumer Consumer-11 finished its job; terminating.
+Produced Queue: [33]
+Consumer-12 processed data from resource: 33
+Produced Queue: [34]
+Consumer-0 IS STARVING AND REQUESTING FOR 0
+Consumer-1 IS STARVING AND REQUESTING FOR 1
+Consumer-2 IS STARVING AND REQUESTING FOR 8
+Consumer-3 IS STARVING AND REQUESTING FOR 3
+Consumer-12 processed data from resource: 34
+Produced Queue: []
+Consumer-12 processed data from resource: 35
+Produced Queue: []
+Consumer-13 processed data from resource: 36
+Produced Queue: [37]
+Consumer-10 processed data from resource: 37
+Consumer-0 IS STARVING AND REQUESTING FOR 0
+Consumer-1 IS STARVING AND REQUESTING FOR 1
+Consumer-2 IS STARVING AND REQUESTING FOR 8
+Consumer-3 IS STARVING AND REQUESTING FOR 3
+Consumer-13 processed data from resource: 38
+Produced Queue: []
+Produced Queue: [39]
+Consumer-12 processed data from resource: 39
+Produced Queue: [40]
+Consumer-12 processed data from resource: 40
+Consumer-12 processed data from resource: 41
+Produced Queue: []
+Consumer Consumer-12 finished its job; terminating.
+Consumer-0 IS STARVING AND REQUESTING FOR 0
+Consumer-1 IS STARVING AND REQUESTING FOR 1
+Consumer-2 IS STARVING AND REQUESTING FOR 8
+Produced Queue: [42]
+Consumer-13 processed data from resource: 42
+Consumer Consumer-13 finished its job; terminating.
+Produced Queue: [43]
+Consumer-15 processed data from resource: 43
+Consumer-15 processed data from resource: 44
+Produced Queue: []
+Produced Queue: [45]
+
+Process finished with exit code 130 (interrupted by signal 2: SIGINT)
