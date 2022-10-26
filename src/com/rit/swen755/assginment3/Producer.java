@@ -22,14 +22,20 @@ public class Producer implements Runnable {
     }
     @Override
     public void run() {
+        int item;
         try {
             while (true) {
                 if (this.resource.continueProducing) {
-                    for (Integer i = 1; i <= 3; i++) {
+                    for (Integer i = 1; i <= 5; i++) {
                         System.out.println("Produced Queue: " + resource.getQueue());
-//                        System.out.println(this.name + " produced: " + (resource.peek()+1));
+//                        if (resource.peek() == null || resource.peek() == 0)
+//                            item = 1;
+//                        else
+//                            item = resource.peek()+1;
+                        item = resource.put();
+                        System.out.println(this.name + " produced: " + (item));
+//                        resource.put(this.keepTrackOfProducedNumbers++);
                         Thread.sleep(2000);
-                        resource.put(this.keepTrackOfProducedNumbers++);
                     }
                     this.resource.continueProducing = Boolean.FALSE;
                 }

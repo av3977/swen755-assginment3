@@ -32,8 +32,8 @@ public class ApplicationRunner {
                 int randomNumber = ThreadLocalRandom.current().nextInt(1, 9 + 1);
                 consumers[i] = new Consumer("Consumer-" + String.valueOf(i), resource, randomNumber, System.currentTimeMillis());
                 consumersThreads[i] = new Thread(consumers[i]);
-//                consumersThreads[i].setPriority(randomNumber); // Priority scheduling.
-                consumersThreads[i].setPriority(10 - randomNumber); // --> SJF [Shortest job first]
+                consumersThreads[i].setPriority(randomNumber); // Priority scheduling.
+//                consumersThreads[i].setPriority(10 - randomNumber); // --> SJF [Shortest job first]
             }
             int initialConsumerProcess = 7;
             int secondConsumerBatch = 7;
@@ -106,15 +106,15 @@ public class ApplicationRunner {
 
     private static int scaleUpProducers(BlockingQueue queue) {
         System.out.println("Scale up queue: "+ queue.size());
-        if (queue.size() >= 6 && queue.size() < 10) {
+        if (queue.size() >= 6 && queue.size() < 8) {
             return 1;
-        } else if (queue.size() >= 10 && queue.size() < 14) {
+        } else if (queue.size() >= 8 && queue.size() < 12) {
             return 2;
-        } else if (queue.size() >= 14 && queue.size() < 18) {
+        } else if (queue.size() >= 12 && queue.size() < 16) {
             return 3;
-        } else if (queue.size() >= 18 && queue.size() < 22) {
+        } else if (queue.size() >= 16 && queue.size() < 20) {
             return 4;
-        } else if (queue.size() >= 22) {
+        } else if (queue.size() >= 20) {
             return 5;
         }
         return 0;

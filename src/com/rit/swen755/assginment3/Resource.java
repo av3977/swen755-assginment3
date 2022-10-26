@@ -15,8 +15,9 @@ public class Resource {
     public void put(Integer data) throws InterruptedException {
         this.queue.put(data);
     }
-    public void put() throws InterruptedException {
-        this.queue.put(this.queue.peek()+1);
+    public int put() throws InterruptedException {
+        this.queue.put(this.queue.size()+1);
+        return this.queue.size();
     }
 
     public Integer get() throws InterruptedException {

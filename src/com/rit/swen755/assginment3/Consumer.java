@@ -37,7 +37,7 @@ public class Consumer implements Runnable {
         try {
             Integer data = resource.get();
             while (true) {
-                Thread.sleep(1000);
+                Thread.sleep(2000);
                 if (data!=null) {
                     System.out.println(this.name + " processed data from resource: " + data);
                     this.requestNumberOfItems--;
