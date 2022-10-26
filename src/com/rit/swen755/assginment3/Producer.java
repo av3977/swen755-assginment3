@@ -1,5 +1,9 @@
 package com.rit.swen755.assginment3;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class Producer implements Runnable {
 
     private Resource resource;
@@ -27,16 +31,16 @@ public class Producer implements Runnable {
                 if (this.resource.continueProducing) {
                     for (Integer i = 1; i <= 3; i++) {
                         System.out.println("Produced Queue: " + resource.getQueue());
-//                        System.out.println(this.name + " produced: " + (resource.peek()+1));
-                        Thread.sleep(2000);
+                        System.out.println(this.name + " produced: " + (this.keepTrackOfProducedNumbers));
+                        Thread.sleep(1000);
                         resource.put(this.keepTrackOfProducedNumbers++);
                     }
                     this.resource.continueProducing = Boolean.FALSE;
+                } else {
+                    if (keepCheckOnQueue())
+                        resource.continueProducing = Boolean.TRUE;
                 }
-
-                Thread.sleep(1000);
-                if (keepCheckOnQueue())
-                    this.resource.continueProducing = Boolean.TRUE;
+                Thread.sleep(2000);
             }
         }
         catch (InterruptedException ex) {

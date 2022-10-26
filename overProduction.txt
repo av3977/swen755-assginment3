@@ -1,0 +1,318 @@
+/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/bin/java -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=62458:/Applications/IntelliJ IDEA.app/Contents/bin -Dfile.encoding=UTF-8 -classpath /Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/charsets.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/cldrdata.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/dnsns.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/jaccess.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/jfxrt.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/localedata.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/nashorn.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/sunec.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/sunjce_provider.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/sunpkcs11.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/ext/zipfs.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/jce.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/jfr.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/jfxswt.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/jsse.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/management-agent.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/resources.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/jre/lib/rt.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/ant-javafx.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/dt.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/javafx-mx.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/jconsole.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/packager.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/sa-jdi.jar:/Users/ashnilvazirani/Library/Java/JavaVirtualMachines/liberica-1.8.0_322/lib/tools.jar:/Users/ashnilvazirani/Desktop/Assignment-3/out/production/Assignment-3 ApplicationRunner
+Number of Producer threads: 1
+Produced Queue: [1]
+Producer-0 produced: 0
+--------------------------------------------------------------------------------
+--------Executing first 7 consumers--------
+Produced Queue: [0]
+Producer-0 produced: 1
+Consumer-0 processed data from resource: 1
+Produced Queue: [1]
+Producer-0 produced: 2
+Consumer-2 processed data from resource: 0
+Consumer-6 processed data from resource: 1
+Consumer-2 processed data from resource: 2
+Produced Queue: []
+Producer-0 produced: 3
+Produced Queue: [3]
+Producer-0 produced: 4
+Produced Queue: [4]
+Producer-0 produced: 5
+Consumer-6 processed data from resource: 3
+Consumer-3 processed data from resource: 4
+Scale up queue: 8
+Scaling up by: 1
+Number of Producer threads: 2
+Resource queue size: []
+---------OVER PRODUCTION SCENARIO--------
+Consumer-6 processed data from resource: 5
+Produced Queue: []
+Producer-0 produced: 6
+Produced Queue: []
+Producer-11 produced: 0
+Produced Queue: [6]
+Producer-0 produced: 7
+Produced Queue: [0]
+Producer-11 produced: 1
+Consumer-4 processed data from resource: 6
+Produced Queue: [7]
+Producer-0 produced: 8
+Consumer-6 processed data from resource: 0
+Produced Queue: [1]
+Producer-11 produced: 2
+Consumer-0 processed data from resource: 7
+Consumer-3 processed data from resource: 1
+Consumer-2 processed data from resource: 8
+Consumer Consumer-2 finished its job; terminating.
+Consumer-0 processed data from resource: 2
+Produced Queue: []
+Producer-11 produced: 3
+Produced Queue: [3]
+Producer-11 produced: 4
+Produced Queue: []
+Producer-0 produced: 9
+Produced Queue: [4]
+Producer-11 produced: 5
+Consumer-3 processed data from resource: 3
+Produced Queue: [9]
+Producer-0 produced: 10
+--------Scheduling next 5 consumers--------
+Job Queue: 8
+Scale up queue: 15
+Scaling up by: 2
+Resource queue size: []
+---------ENOUGH PRODUCTION SCENARIO--------
+Exception in thread "AWT-EventQueue-0" java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@11fc681 rejected from java.util.concurrent.ThreadPoolExecutor@fd838d2[Shutting down, pool size = 15, active threads = 15, queued tasks = 0, completed tasks = 1]
+	at java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2063)
+	at java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:830)
+	at java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1379)
+	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:112)
+	at ApplicationRunner$1.actionPerformed(ApplicationRunner.java:65)
+	at javax.swing.Timer.fireActionPerformed(Timer.java:313)
+	at javax.swing.Timer$DoPostEvent.run(Timer.java:245)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:311)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:205)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+Consumer-0 processed data from resource: 4
+Consumer Consumer-0 finished its job; terminating.
+Consumer-3 processed data from resource: 9
+Consumer Consumer-3 finished its job; terminating.
+Produced Queue: [10]
+Producer-0 produced: 11
+Consumer-4 processed data from resource: 5
+Consumer-1 processed data from resource: 10
+Consumer-4 processed data from resource: 11
+Consumer Consumer-4 finished its job; terminating.
+Produced Queue: []
+Producer-0 produced: 12
+Produced Queue: []
+Producer-11 produced: 6
+Produced Queue: [12]
+Producer-0 produced: 13
+Produced Queue: [6]
+Producer-11 produced: 7
+Produced Queue: [13]
+Producer-0 produced: 14
+Consumer-1 processed data from resource: 12
+Consumer-6 processed data from resource: 6
+Produced Queue: [7]
+Producer-11 produced: 8
+Consumer-1 processed data from resource: 13
+Consumer-5 processed data from resource: 7
+Consumer-12 processed data from resource: 14
+Consumer-1 processed data from resource: 8
+Produced Queue: []
+Producer-11 produced: 9
+Resource queue size: []
+---------ENOUGH PRODUCTION SCENARIO--------
+Produced Queue: [9]
+Producer-11 produced: 10
+Produced Queue: []
+Producer-0 produced: 15
+Produced Queue: [10]
+Producer-11 produced: 11
+Consumer-5 processed data from resource: 9
+Produced Queue: [15]
+Producer-0 produced: 16
+Consumer-1 processed data from resource: 10
+Consumer-5 processed data from resource: 15
+Produced Queue: [16]
+Producer-0 produced: 17
+Consumer-12 processed data from resource: 11
+Consumer-11 processed data from resource: 16
+Consumer-11 processed data from resource: 17
+Produced Queue: []
+Producer-0 produced: 18
+Produced Queue: []
+Producer-11 produced: 12
+Produced Queue: [18]
+Producer-0 produced: 19
+Produced Queue: [12]
+Producer-11 produced: 13
+Consumer-8 processed data from resource: 18
+Produced Queue: [19]
+Producer-0 produced: 20
+Produced Queue: [13]
+Producer-11 produced: 14
+Consumer-1 processed data from resource: 12
+Consumer-5 processed data from resource: 19
+Consumer-8 processed data from resource: 13
+Consumer-13 processed data from resource: 20
+Resource queue size: []
+---------ENOUGH PRODUCTION SCENARIO--------
+Consumer-1 processed data from resource: 14
+Produced Queue: []
+Producer-11 produced: 15
+Produced Queue: [15]
+Producer-11 produced: 16
+Produced Queue: []
+Producer-0 produced: 21
+Consumer-12 processed data from resource: 15
+Produced Queue: [16]
+Producer-11 produced: 17
+Produced Queue: []
+Producer-0 produced: 22
+Consumer-1 processed data from resource: 16
+Consumer-5 processed data from resource: 21
+Produced Queue: [22]
+Producer-0 produced: 23
+Consumer-8 processed data from resource: 17
+Consumer-13 processed data from resource: 22
+Consumer-11 processed data from resource: 23
+Produced Queue: []
+Producer-0 produced: 24
+Produced Queue: []
+Producer-11 produced: 18
+Produced Queue: []
+Producer-0 produced: 25
+Produced Queue: [18]
+Producer-11 produced: 19
+Produced Queue: []
+Producer-0 produced: 26
+Consumer-13 processed data from resource: 24
+Consumer Consumer-13 finished its job; terminating.
+Resource queue size: []
+---------ENOUGH PRODUCTION SCENARIO--------
+Consumer-6 processed data from resource: 18
+Produced Queue: [19]
+Producer-11 produced: 20
+Consumer-5 processed data from resource: 25
+Consumer-12 processed data from resource: 19
+Consumer-10 processed data from resource: 26
+Consumer-1 processed data from resource: 20
+Consumer Consumer-1 finished its job; terminating.
+Produced Queue: []
+Producer-11 produced: 21
+Produced Queue: [21]
+Producer-11 produced: 22
+Produced Queue: []
+Producer-0 produced: 27
+Consumer-12 processed data from resource: 21
+Produced Queue: [22]
+Producer-11 produced: 23
+Produced Queue: [27]
+Producer-0 produced: 28
+Consumer-11 processed data from resource: 22
+Consumer-5 processed data from resource: 27
+Produced Queue: []
+Producer-0 produced: 29
+Consumer-12 processed data from resource: 23
+Consumer-5 processed data from resource: 28
+Consumer-12 processed data from resource: 29
+Consumer Consumer-12 finished its job; terminating.
+Produced Queue: []
+Producer-0 produced: 30
+Resource queue size: []
+---------ENOUGH PRODUCTION SCENARIO--------
+Produced Queue: []
+Producer-11 produced: 24
+Produced Queue: [30]
+Producer-0 produced: 31
+Produced Queue: [24]
+Producer-11 produced: 25
+Consumer-10 processed data from resource: 30
+Produced Queue: [31]
+Producer-0 produced: 32
+Consumer-6 processed data from resource: 24
+Consumer Consumer-6 finished its job; terminating.
+Produced Queue: [25]
+Producer-11 produced: 26
+Consumer-8 processed data from resource: 31
+Consumer-10 processed data from resource: 25
+Consumer-5 processed data from resource: 32
+Consumer Consumer-5 finished its job; terminating.
+Consumer-7 processed data from resource: 26
+Produced Queue: []
+Producer-11 produced: 27
+Produced Queue: [27]
+Producer-11 produced: 28
+Produced Queue: []
+Producer-0 produced: 33
+Consumer-10 processed data from resource: 27
+Produced Queue: [28]
+Producer-11 produced: 29
+Produced Queue: [33]
+Producer-0 produced: 34
+Consumer-7 processed data from resource: 28
+Consumer Consumer-7 finished its job; terminating.
+Consumer-8 processed data from resource: 33
+Produced Queue: [34]
+Producer-0 produced: 35
+Consumer-9 processed data from resource: 29
+Consumer-11 processed data from resource: 34
+Resource queue size: []
+---------ENOUGH PRODUCTION SCENARIO--------
+Consumer-8 processed data from resource: 35
+Consumer Consumer-8 finished its job; terminating.
+Produced Queue: []
+Producer-0 produced: 36
+Produced Queue: []
+Producer-11 produced: 30
+Produced Queue: [36]
+Producer-0 produced: 37
+Produced Queue: [30]
+Producer-11 produced: 31
+Produced Queue: [37]
+Producer-0 produced: 38
+Consumer-11 processed data from resource: 36
+Produced Queue: [31]
+Producer-11 produced: 32
+Consumer-9 processed data from resource: 30
+Consumer-10 processed data from resource: 37
+Consumer-11 processed data from resource: 31
+Consumer-9 processed data from resource: 38
+Consumer-10 processed data from resource: 32
+Produced Queue: []
+Producer-11 produced: 33
+Produced Queue: [33]
+Producer-11 produced: 34
+Produced Queue: []
+Producer-0 produced: 39
+Consumer-11 processed data from resource: 33
+Produced Queue: [34]
+Producer-11 produced: 35
+Produced Queue: [39]
+Producer-0 produced: 40
+Resource queue size: []
+---------ENOUGH PRODUCTION SCENARIO--------
+Consumer-11 processed data from resource: 34
+Consumer Consumer-11 finished its job; terminating.
+Produced Queue: [40]
+Producer-0 produced: 41
+Consumer-9 processed data from resource: 39
+Consumer-10 processed data from resource: 35
+Consumer Consumer-10 finished its job; terminating.
+Consumer-9 processed data from resource: 40
+Consumer-9 processed data from resource: 41
+Produced Queue: []
+Producer-0 produced: 42
+Produced Queue: []
+Producer-11 produced: 36
+Produced Queue: [42]
+Producer-0 produced: 43
+Produced Queue: [36]
+Producer-11 produced: 37
+Produced Queue: [36, 43]
+Producer-0 produced: 44
+Consumer-9 processed data from resource: 42
+Produced Queue: [43, 37]
+Producer-11 produced: 38
+Consumer-9 processed data from resource: 36
+Consumer Consumer-9 finished its job; terminating.
+Resource queue size: [43, 37, 44, 38]
+---------ENOUGH PRODUCTION SCENARIO--------
+Resource queue size: [43, 37, 44, 38]
+---------ENOUGH PRODUCTION SCENARIO--------
+
+Process finished with exit code 130 (interrupted by signal 2: SIGINT)

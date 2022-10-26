@@ -13,20 +13,23 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class ApplicationRunner {
     public static int numberOfProducers = 0;
+    public static Resource resource = new Resource();
+    public static List<Thread> producerThreads = new ArrayList<>();
+
     public static void main(String[] args) {
         try {
-            Resource resource = new Resource();
             BlockingQueue jobQueue = new LinkedBlockingQueue<>();
             Consumer[] consumers = new Consumer[30];
             Thread[] consumersThreads = new Thread[30];
-            List<Future> producerThreads = new ArrayList<>();
-            ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(10, 15, 60L, SECONDS, jobQueue);
+            ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(20, 25, 60L, SECONDS, jobQueue);
 
             // start 1 producer by default.
-            Thread producerThread = new Thread(new Producer(resource, "Producer-"+ApplicationRunner.numberOfProducers));
+            Thread producerThread = new Thread(new Producer(resource, "Producer-"+producerThreads.size()));
             producerThread.setPriority(Thread.MAX_PRIORITY);
-            producerThreads.add(poolExecutor.submit(producerThread));
-            ApplicationRunner.numberOfProducers++;
+            producerThreads.add(producerThread);
+            poolExecutor.submit(producerThread);
+            System.out.println("Number of Producer threads: " + producerThreads.size());
+//            Thread.sleep(2000);
 
             for (int i = 0; i<30; i++) {
                 int randomNumber = ThreadLocalRandom.current().nextInt(1, 9 + 1);
@@ -43,40 +46,65 @@ public class ApplicationRunner {
                 poolExecutor.execute(consumersThreads[i]);
                 consumers[i].setScheduled(true);
             }
-            // seen 8 threads until here
-            Timer timer = new Timer(3000, new ActionListener() {
+
+
+            Timer starvationCheck = new Timer(20000, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    // FixMe: java.util.concurrent.RejectedExecutionException
-                    int scaleUp = scaleUpProducers(jobQueue);
-                    System.out.println("Scaling up by: " + scaleUp);
-                    Thread producerThread = new Thread(new Producer(resource, "Producer-"+ApplicationRunner.numberOfProducers));
-                    producerThread.setPriority(Thread.MAX_PRIORITY);
-                    // scaling up with multiple producer when consumers are more in demand
-                    for (int i = 0; i<scaleUp; i++) {
-                        producerThreads.add(poolExecutor.submit(producerThread));
-                        ApplicationRunner.numberOfProducers++;
+                    for (int i = 0; i<consumers.length;i++) {
+                        if (consumers[i].isScheduled() && consumers[i].isStarving()) {
+                            System.out.println(consumers[i].getName() + " is STARVING.......");
+                        }
                     }
                 }
             });
-            timer.setRepeats(true); // execute multiple times
-            timer.start();
-
-
-            Timer starvationMonitor = new Timer(9000, new ActionListener() {
+            starvationCheck.setRepeats(true); // execute multiple times
+            starvationCheck.start();
+            // seen 8 threads until here
+            Timer timer = new Timer(10000, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                   for (int i = 0;i<consumers.length;i++)
-                       if (consumers[i].isScheduled() && isStarving(consumers[i]))
-                           System.out.println(consumers[i].getName() + " IS STARVING AND REQUESTING FOR " + consumers[i].getRequestNumberOfItems());
+                    // FixMe: java.util.concurrent.RejectedExecutionException
+                    int scaleUp = scaleUpProducers(jobQueue, poolExecutor.getActiveCount());
+                    if (scaleUp >= producerThreads.size()) {
+                        System.out.println("Scaling up by: " + scaleUp);
+                        Thread producerThread = new Thread(new Producer(resource, "Producer-"+producerThreads.size()+1));
+                        producerThread.setPriority(Thread.MAX_PRIORITY);
+                        // scaling up with multiple producer when consumers are more in demand
+                        if (poolExecutor.getActiveCount() >= 10) {
+                            poolExecutor.setCorePoolSize(15);
+                            poolExecutor.setMaximumPoolSize(20);
+                        }
+                        for (int i = 0; i<scaleUp; i++) {
+                            poolExecutor.submit(producerThread);
+                            producerThreads.add(producerThread);
+                        }
+                        System.out.println("Number of Producer threads: " + producerThreads.size());
+                    }
                 }
             });
-            starvationMonitor.setRepeats(true); // execute multiple times
-            starvationMonitor.start();
+            starvationCheck.setRepeats(true); // execute multiple times
+            starvationCheck.start();
 
-            System.out.println("--------Sleeping main thread for 20 seconds--------");
+            Timer checkOverProduction = new Timer(10000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                   if (checkOverProduction(poolExecutor.getActiveCount())) {
+                       if (producerThreads.size() > 1) {
+                           System.out.println("---------OVER PRODUCTION SCENARIO--------");
+                           poolExecutor.remove(producerThreads.remove(producerThreads.size()-1));
+                       }
+                   } else {
+                       System.out.println("---------ENOUGH PRODUCTION SCENARIO--------" + producerThreads.size());
+                   }
+                }
+            });
+            checkOverProduction.setRepeats(true); // execute multiple times
+            checkOverProduction.start();
+
             Thread.sleep(20000);
-            System.out.println("--------Scheduling next 5 consumers--------");
+            System.out.println("--------Scheduling next " +secondConsumerBatch+ " consumers--------");
+            System.out.println("Job Queue: " + poolExecutor.getActiveCount());
 
             // Core pool: 10
             // Max pool: 15
@@ -104,23 +132,29 @@ public class ApplicationRunner {
         }
     }
 
-    private static int scaleUpProducers(BlockingQueue queue) {
-        System.out.println("Scale up queue: "+ queue.size());
-        if (queue.size() >= 6 && queue.size() < 10) {
+    private static int scaleUpProducers(BlockingQueue queue, int activeProcess) {
+        int activeJobCount = Math.max(queue.size(), activeProcess);
+        System.out.println("Scale up queue: "+ activeJobCount);
+        if (activeJobCount >= 8 && activeJobCount < 12) {
             return 1;
-        } else if (queue.size() >= 10 && queue.size() < 14) {
+        } else if (activeJobCount >= 12 && activeJobCount < 16) {
             return 2;
-        } else if (queue.size() >= 14 && queue.size() < 18) {
+        } else if (activeJobCount >= 16 && activeJobCount < 20) {
             return 3;
-        } else if (queue.size() >= 18 && queue.size() < 22) {
+        } else if (activeJobCount >= 20 && activeJobCount < 24) {
             return 4;
-        } else if (queue.size() >= 22) {
+        } else if (activeJobCount >= 24) {
             return 5;
         }
         return 0;
     }
 
-    private static boolean isStarving(Consumer consumer) {
-        return consumer.isStarving();
+    private static boolean checkOverProduction(int activeProcesses) {
+        System.out.println("Resource queue size: " + resource.getQueue());
+        if (resource.getQueue().size() > 10 )
+            return true;
+        if (producerThreads.size() > 1 && activeProcesses < 10)
+            return true;
+        return false;
     }
 }
